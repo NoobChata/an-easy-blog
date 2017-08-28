@@ -52,7 +52,7 @@ def post_publish(request, pk):
     post.publish()
     return redirect('blog:post_detail', pk=pk)
 
-@login_required(login_url=r'^login/')
+@login_required(login_url='login')
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
