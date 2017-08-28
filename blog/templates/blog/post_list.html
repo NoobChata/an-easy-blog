@@ -12,6 +12,11 @@
             </div>
             <h1><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
+            {% if post.approved_comments.count %}
+                <a href="{% url 'blog:post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+            {% else %}
+                <a href="{% url 'blog:post_detail' pk=post.pk %}">Comments: 0</a>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock content %}
